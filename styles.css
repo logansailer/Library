@@ -7,3 +7,8 @@
 header{
     text-align: center;
 }
+
+.book{
+    margin: auto;
+    border: solid black 2px;
+}
