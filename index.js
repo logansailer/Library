@@ -8,7 +8,6 @@ const bookYear = bookDialogue.querySelector("#bookYear");
 const bookRead = bookDialogue.querySelector("#bookRead");
 const confirmBtn = bookDialogue.querySelector("#confirmBtn");
 const bookList = document.querySelector(".page-layout")
-
 let myLibrary = [];
 
 function Book(title, author, year, finished) {
@@ -18,41 +17,33 @@ function Book(title, author, year, finished) {
     this.finished = finished;
 }
 
-
 // "Show the dialog" button opens the <dialog> modally
 addButton.addEventListener("click", () => {
   bookDialogue.showModal();
 });
 
-
 confirmBtn.addEventListener("click", e => {
-    //stops form from submitting
-    e.preventDefault()
-    
+    e.preventDefault() //stops form from submitting
     let title = bookTitle.value;
     let author = bookAuthor.value;
     let year = bookYear.value;
     let finished = bookRead.value;
-
     let newBook = new Book(title, author, year, finished)
     myLibrary += newBook
-
     displayBook(newBook)
     clearInput()
     bookDialogue.close()
 })
-
 
 // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
 bookDialogue.addEventListener("close", (e) => {
   bookDialogue.close()
 });
 
-
+// creates book object and appends it to the body
 function displayBook(newBook) {
     let bookDiv = document.createElement("div");
     bookDiv.classList.add("book");
-
     let divBookTitle = document.createElement("h2");
     let divBookAuthor = document.createElement("h4");
     let divBookYear = document.createElement("p");
@@ -61,20 +52,18 @@ function displayBook(newBook) {
     divBookAuthor.classList.add("author")
     divBookYear.classList.add("year")
     divBookFinished.classList.add("finished")
-
     bookDiv.appendChild(divBookTitle);
     bookDiv.appendChild(divBookAuthor);
     bookDiv.appendChild(divBookYear);
     bookDiv.appendChild(divBookFinished);
-
     divBookTitle.textContent = newBook.title;
     divBookAuthor.textContent = `by ${newBook.author}`;
     divBookYear.textContent = `Written in ${newBook.year}`;
     divBookFinished.textContent = newBook.finished;
-
     bookList.appendChild(bookDiv)
 }
 
+// clears input fields after submit
 function clearInput() {
     bookTitle.value = "";
     bookAuthor.value = "";

@@ -1,17 +1,26 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .page-layout{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1em
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+    justify-items: center;
 }
 
 header{
     text-align: center;
 }
 
+.newbook{
+    
+}
+
 .book{
-    min-height: 200px;
-    min-width: 200px;
-    margin: auto;
+    justify-self: center;
+    height: 250px;
+    width: 300px;
     border: solid rgb(203, 166, 122) 2px;
     border-radius: 10px;
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.22);
@@ -26,11 +35,13 @@ button{
 }
 
 .title{
+    font-size: 200%;
     margin: 10px;
     overflow: auto;
 }
 
 .author{
+    font-size: 120%;
     margin: 10px;
 }
 
