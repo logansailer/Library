@@ -10,7 +10,23 @@
 <body>
     <header>
         <h1>.Lib</h1>
-        <button>Add Book</button>
+        <button id="showDialog">+ Add New Book</button>
+        <!-- A modal dialog containing a form -->
+        <dialog id="newBook">
+            <form>
+                <p>
+                    <label>
+                        Book name:
+                        <input id="bookName"></input>
+                    </label>
+                </p>
+                <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button id="confirmBtn" value="default">Confirm</button>
+                </div>
+            </form>
+        </dialog>
+        <output></output>
     </header>
     <div class="page-layout">
         <div class="book">
