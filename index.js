@@ -1,7 +1,8 @@
+//DOM Elements
 const addButton = document.querySelector("#showDialog");
 const bookDialog = document.querySelector("#newBook");
 const outputBox = document.querySelector("output");
-const bookName = bookDialog.querySelector("#bookName");
+const bookTitle = bookDialog.querySelector("#bookTitle");
 const confirmBtn = bookDialog.querySelector("#confirmBtn");
 
 // "Show the dialog" button opens the <dialog> modally
@@ -10,8 +11,8 @@ addButton.addEventListener("click", () => {
 });
 
 // "Favorite animal" input sets the value of the submit button
-bookName.addEventListener("change", (e) => {
-  confirmBtn.value = bookName.value;
+bookTitle.addEventListener("change", (e) => {
+  confirmBtn.value = bookTitle.value;
 });
 
 // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
@@ -25,16 +26,15 @@ bookDialog.addEventListener("close", (e) => {
 // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
 confirmBtn.addEventListener("click", (event) => {
   event.preventDefault(); // We don't want to submit this fake form
-  bookDialog.close(bookName.value); // Have to send the select box value here.
+  bookDialog.close(bookTitle.value); // Have to send the select box value here.
 });
 
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, read) {
     this.title = title;
     this.author = author;
-    this.pages = pages;
     this.read = read;
 }
 

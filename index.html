@@ -14,12 +14,24 @@
         <!-- A modal dialog containing a form -->
         <dialog id="newBook">
             <form>
-                <p>
+                <div class="grid">
                     <label>
-                        Book name:
-                        <input id="bookName"></input>
+                        Book title:
+                        <input id="bookTitle"></input>
                     </label>
-                </p>
+                    <label>
+                        Author:
+                        <input id="author"></input>
+                    </label>
+                    <label>
+                        Year Pubished:
+                        <input id="published"></input>
+                    </label>
+                    <label>
+                        Completed?:
+                        <input id="read"></input>
+                    </label>
+                </div> 
                 <div>
                     <button value="cancel" formmethod="dialog">Cancel</button>
                     <button id="confirmBtn" value="default">Confirm</button>
