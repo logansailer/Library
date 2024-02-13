@@ -9,12 +9,12 @@ const bookRead = bookDialogue.querySelector("#bookRead");
 const confirmBtn = bookDialogue.querySelector("#confirmBtn");
 const bookList = document.querySelector(".page-layout")
 
-const myLibrary = [];
+let myLibrary = [];
 
-function Book(title, author, read, finished) {
+function Book(title, author, year, finished) {
     this.title = title;
     this.author = author;
-    this.read = read;
+    this.year = year;
     this.finished = finished;
 }
 
@@ -28,14 +28,16 @@ addButton.addEventListener("click", () => {
 confirmBtn.addEventListener("click", e => {
     e.preventDefault()
 
-    const title = bookTitle.value;
-    const author = bookAuthor.value;
-    const year = bookYear.value;
-    const finished = bookRead.value;
+    let title = bookTitle.value;
+    let author = bookAuthor.value;
+    let year = bookYear.value;
+    let finished = bookRead.value;
 
-    let book = new Book(title, author, year, finished)
-    myLibrary = [...myLibrary, book]
+    let newBook = new Book(title, author, year, finished)
+    myLibrary = [...myLibrary, newBook]
     displayBook()
+
+    bookDialogue.close()
 })
 
 
@@ -59,29 +61,25 @@ function displayBook() {
     bookDiv.appendChild(divBookYear);
     bookDiv.appendChild(divBookFinished);
 
-    divBookTitle.textContent = 
-    divBookAuthor.textContent = 
-    divBookYEar.textContent = 
-    divBookFinished.textContent = 
+    divBookTitle.textContent = Book.title;
+    divBookAuthor.textContent = Book.author;
+    divBookYear.textContent = Book.year;
+    divBookFinished.textContent = Book.finished;
 
+    console.log(divBookTitle)
     bookList.appendChild(bookDiv)
     
-    let inputText = input.value;
-    input.value = "";
-    let li = document.createElement("li");
-    let spanText = document.createElement("span");
-    let deleteButton = document.createElement("button")
-    li.appendChild(spanText);
-    li.appendChild(deleteButton);
-    spanText.textContent = inputText;
-    deleteButton.textContent = "Delete"
-    list.appendChild(li);
-    deleteButton.addEventListener('click', () => {
-        list.removeChild(li);
-    });
+    //let inputText = input.value;
+    //input.value = "";
+    //let li = document.createElement("li");
+    //let spanText = document.createElement("span");
+    //let deleteButton = document.createElement("button")
+    //li.appendChild(spanText);
+    //li.appendChild(deleteButton);
+    //spanText.textContent = inputText;
+    //deleteButton.textContent = "Delete"
+    //list.appendChild(li);
+    //deleteButton.addEventListener('click', () => {
+    //    list.removeChild(li);
+    //});
 }
-
-
-
-const button = document.querySelector("button");
-button.addEventListener('click', press);
