@@ -24,3 +24,16 @@ button{
 .grid{
     display: grid;
 }
+
+.title{
+    margin: 10px;
+    overflow: auto;
+}
+
+.author{
+    margin: 10px;
+}
+
+.year{
+    margin: 10px
+}

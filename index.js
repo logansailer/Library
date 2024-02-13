@@ -53,10 +53,14 @@ function displayBook(newBook) {
     let bookDiv = document.createElement("div");
     bookDiv.classList.add("book");
 
-    let divBookTitle = document.createElement("h3");
+    let divBookTitle = document.createElement("h2");
     let divBookAuthor = document.createElement("h4");
     let divBookYear = document.createElement("p");
     let divBookFinished = document.createElement("p");
+    divBookTitle.classList.add("title")
+    divBookAuthor.classList.add("author")
+    divBookYear.classList.add("year")
+    divBookFinished.classList.add("finished")
 
     bookDiv.appendChild(divBookTitle);
     bookDiv.appendChild(divBookAuthor);
@@ -64,8 +68,8 @@ function displayBook(newBook) {
     bookDiv.appendChild(divBookFinished);
 
     divBookTitle.textContent = newBook.title;
-    divBookAuthor.textContent = newBook.author;
-    divBookYear.textContent = newBook.year;
+    divBookAuthor.textContent = `by ${newBook.author}`;
+    divBookYear.textContent = `Written in ${newBook.year}`;
     divBookFinished.textContent = newBook.finished;
 
     bookList.appendChild(bookDiv)
