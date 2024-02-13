@@ -26,17 +26,19 @@ addButton.addEventListener("click", () => {
 
 
 confirmBtn.addEventListener("click", e => {
+    //stops form from submitting
     e.preventDefault()
-
+    
     let title = bookTitle.value;
     let author = bookAuthor.value;
     let year = bookYear.value;
     let finished = bookRead.value;
 
     let newBook = new Book(title, author, year, finished)
-    myLibrary = [...myLibrary, newBook]
-    displayBook()
+    myLibrary += newBook
 
+    displayBook(newBook)
+    clearInput()
     bookDialogue.close()
 })
 
@@ -47,7 +49,7 @@ bookDialogue.addEventListener("close", (e) => {
 });
 
 
-function displayBook() {
+function displayBook(newBook) {
     let bookDiv = document.createElement("div");
     bookDiv.classList.add("book");
 
@@ -61,25 +63,17 @@ function displayBook() {
     bookDiv.appendChild(divBookYear);
     bookDiv.appendChild(divBookFinished);
 
-    divBookTitle.textContent = Book.title;
-    divBookAuthor.textContent = Book.author;
-    divBookYear.textContent = Book.year;
-    divBookFinished.textContent = Book.finished;
+    divBookTitle.textContent = newBook.title;
+    divBookAuthor.textContent = newBook.author;
+    divBookYear.textContent = newBook.year;
+    divBookFinished.textContent = newBook.finished;
 
-    console.log(divBookTitle)
     bookList.appendChild(bookDiv)
-    
-    //let inputText = input.value;
-    //input.value = "";
-    //let li = document.createElement("li");
-    //let spanText = document.createElement("span");
-    //let deleteButton = document.createElement("button")
-    //li.appendChild(spanText);
-    //li.appendChild(deleteButton);
-    //spanText.textContent = inputText;
-    //deleteButton.textContent = "Delete"
-    //list.appendChild(li);
-    //deleteButton.addEventListener('click', () => {
-    //    list.removeChild(li);
-    //});
+}
+
+function clearInput() {
+    bookTitle.value = "";
+    bookAuthor.value = "";
+    bookYear.value = "";
+    //switchToggle.checked = false;
 }
