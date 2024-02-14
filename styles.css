@@ -13,10 +13,6 @@ header{
     text-align: center;
 }
 
-.newbook{
-    
-}
-
 .book{
     justify-self: center;
     height: 250px;
@@ -32,6 +28,8 @@ button{
 
 .grid{
     display: grid;
+    gap: 1em;
+    align-content: center;
 }
 
 .title{
@@ -46,5 +44,9 @@ button{
 }
 
 .year{
+    margin: 10px
+}
+
+.finished{
     margin: 10px
 }
