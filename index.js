@@ -1,12 +1,12 @@
 //DOM Elements
 const addButton = document.querySelector("#showDialog");
-const bookDialogue = document.querySelector("#newBook");
+const bookDialog = document.querySelector("#newBook");
 const outputBox = document.querySelector("output");
-const bookTitle = bookDialogue.querySelector("#bookTitle");
-const bookAuthor = bookDialogue.querySelector("#bookAuthor");
-const bookYear = bookDialogue.querySelector("#bookYear");
-const bookRead = bookDialogue.querySelector("#bookRead");
-const confirmBtn = bookDialogue.querySelector("#confirmBtn");
+const bookTitle = bookDialog.querySelector("#bookTitle");
+const bookAuthor = bookDialog.querySelector("#bookAuthor");
+const bookYear = bookDialog.querySelector("#bookYear");
+const bookRead = bookDialog.querySelector("#bookRead");
+const confirmBtn = bookDialog.querySelector("#confirmBtn");
 const bookList = document.querySelector(".page-layout")
 let myLibrary = [];
 
@@ -19,7 +19,7 @@ function Book(title, author, year, finished) {
 
 // "Show the dialog" button opens the <dialog> modally
 addButton.addEventListener("click", () => {
-  bookDialogue.showModal();
+  bookDialog.showModal();
 });
 
 confirmBtn.addEventListener("click", e => {
@@ -31,12 +31,12 @@ confirmBtn.addEventListener("click", e => {
     let newBook = new Book(title, author, year, finished)
     displayBook(newBook)
     clearInput()
-    bookDialogue.close()
+    bookDialog.close()
 })
 
 // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
-bookDialogue.addEventListener("close", (e) => {
-  bookDialogue.close()
+bookDialog.addEventListener("close", (e) => {
+  bookDialog.close()
 });
 
 // creates book object and appends it to the body
@@ -69,8 +69,15 @@ function displayBook(newBook) {
     } else {
         completedButton.textContent = "Not Completed";
     }
-    completedButton.addEventListener('Click', () => {
+
+    completedButton.addEventListener('click', () => {
         newBook.finished = !newBook.finished
+        
+        if (newBook.finished === true) {
+            completedButton.textContent = "Not Completed";
+        } else if (newBook.finished ===false) {
+            completedButton.textContent = "Completed";
+        }
     })
 
     deleteButton.textContent = "Delete"
