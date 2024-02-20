@@ -10,11 +10,13 @@ const confirmBtn = bookDialog.querySelector("#confirmBtn");
 const bookList = document.querySelector(".page-layout")
 let myLibrary = [];
 
-function Book(title, author, year, finished) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-    this.finished = finished;
+class Book {
+    constructor(title, author, year, finished) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.finished = finished;
+    }
 }
 
 // "Show the dialog" button opens the <dialog> modally
